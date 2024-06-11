@@ -1,39 +1,21 @@
 import express from "express";
 import nodemon from "nodemon";
 import cors from "cors";
-import mysql2 from "mysql2";
+import mysqlConnection from "./Connection.js";
+import { createProduct, getProduct } from "./controllers/productControllers.js";
+import { login, signUp } from "./controllers/userController.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/",getProduct)
 
-const mysqlConnection = mysql2.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root123",
-    database: "water"
-});
-
-mysqlConnection.connect((err) => {
-    if (err) {
-        console.error("Error connecting to the database:", err);
-    } else {
-        console.log("Connected to the database");
-    }
-});
-
-app.get("/",(req,res)=>{
-    const sql="SELECT * FROM name";
-    mysqlConnection.query(sql,(err,data)=>{
-        if(err) throw err;
-        res.json(data);
-    })
-})
+app.post("/create", createProduct)
+app.post("/login",login)
+app.post("/register", signUp)
 
 app.listen(4040, () => {
     console.log("Server is running on port 4040");
 });
-
-export default mysqlConnection;

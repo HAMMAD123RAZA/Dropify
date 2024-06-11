@@ -2,5 +2,8 @@
   "dependencies": {
     "mysql": "^2.18.1",
     "react-router-dom": "^6.23.1"
+  },
+  "devDependencies": {
+    "daisyui": "^4.12.2"
   }
 }
