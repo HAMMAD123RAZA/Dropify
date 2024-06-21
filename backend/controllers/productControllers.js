@@ -1,6 +1,5 @@
 import mysqlConnection from "../Connection.js";
 
-
 export const getProduct=(req,res)=>{
     const sql="SELECT * FROM product";
     mysqlConnection.query(sql,(err,data)=>{

@@ -10,6 +10,7 @@ import ReqProduct from './Components/ReqProduct'
 import Register from './Components/Register'
 import Login from './Components/Login'
 import Cart from './RTK/Cart'
+import Admin from './Components/Admin'
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
     <Route path='/register' element={<Register/>} />
     <Route path='/login' element={<Login/>} />
     <Route path='/cart' element={<Cart/>} />
+
     </Routes>
   </Router>
     </>

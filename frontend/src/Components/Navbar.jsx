@@ -15,22 +15,23 @@ const Navbar = () => {
     <>
 <header  >
     <nav className='flex justify-between items-center py-4 px-2 bg-gray-200' >
-        <a className='text-2xl font-bold text-blue-600 ' href='/' >Dropify</a>
+        <a className='text-2xl font-bold text-blue-600  hover:text-blue-400' href='/' >Dropify</a>
         <div className=' hidden md:flex gap-5  ' >
-        <a href="/" className="text-blue-500 font-bold  hover:text-black transition duration-300">Home</a>
+        <a href="/" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300">Home</a>
            
-            <a href="/tank" className="text-blue-500 font-bold  hover:text-black transition duration-300">Tank</a>
-            <a href="/bottle" className="text-blue-500 font-bold  hover:text-black transition duration-300">Bottle</a>
-            {/* <a href="/suzuki" className="text-blue-500 font-bold  hover:text-black transition duration-300">Suzuki</a> */}
-             <a href="/gallon" className="text-blue-500 font-bold  hover:text-black transition duration-300">Gallon</a>
-            <a href="/request" className="text-blue-500 font-bold  hover:text-black transition duration-300">Request Product</a>
+            <a href="/tank" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300">Tank</a>
+            <a href="/bottle" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300">Bottle</a>
+            {/* <a href="/suzuki" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300">Suzuki</a> */}
+             <a href="/gallon" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300">Gallon</a>
+            <a href="/request" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300">Request Product</a>
         </div>
-        <div className='hidden md:flex gap-2 hover:text-blue-400 text-blue-600' >
+        <div className='hidden md:flex items-center  gap-4 hover:text-blue-400 text-blue-600' >
+        <Link to="/login" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300" >Login</Link>
+
         <Link to="/cart" >   {items.length}     <IoCart size={38} />
 </Link>
 
-       {/* <Link to="/login" > <button className='bg-blue-600 hover:bg-white hover:text-blue-700 font-bold  text-white p-2 rounded-md'>Login</button></Link>
-      <Link to="/register" ><button  className='bg-blue-600 hover:bg-white hover:text-blue-700 font-bold text-white p-2 rounded-md'>Register</button></Link>   */}
+      {/* <Link to="/register" ><button  className='bg-blue-600 hover:bg-white hover:text-blue-700 font-bold text-white p-2 rounded-md'>Register</button></Link>   */}
         </div>
         <button className='md:hidden' onClick={handleClick}>
         {open?<HiXMark/>:<FaBars/>}
@@ -51,8 +52,8 @@ const Navbar = () => {
             <Link to="/cart" >{items.length}<IoCart />
 </Link>
 
-            {/* <Link to="/login" > <button className='bg-blue-600 hover:bg-white hover:text-blue-700 font-bold  text-white p-2 rounded-md'>Login</button></Link>
-      <Link to="/register" ><button  className='bg-blue-600 hover:bg-white hover:text-blue-700 font-bold text-white p-2 rounded-md'>Register</button></Link>   */}
+            <Link to="/login" className="text-blue-500 font-bold  hover:text-blue-300 transition duration-300">     Login</Link>
+      {/* <Link to="/register" ><button  className='bg-blue-600 hover:bg-white hover:text-blue-700 font-bold text-white p-2 rounded-md'>Register</button></Link>   */}
         </div>
             </div>
             )}

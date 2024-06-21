@@ -2,30 +2,31 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const Register = () => {
-  const [name,setName]=useState('')
-  const [email ,setEmail]=useState('')
-  const [password,setPassword]=useState('')
-  const registerSubmit=(e)=>{
-    e.preventDefault()
-    try {
-      const data=axios.post("http://localhost:4040/register",{
-        name,email,password
-      
-      })
-      localStorage.setItem("User",JSON.stringify(data.data))
-      console.log(data.data)
-      setName('')
-      setEmail('')
-      setPassword('')
-      alert("User Created")
-      window.location.reload()
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
+  const registerSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:4040/register", {
+        fullName: name,  // Note the field name change to match the backend
+        email,
+        password
+      });
+      localStorage.setItem("User", JSON.stringify(response.data));
+      console.log(response.data);
+      setName('');
+      setEmail('');
+      setPassword('');
+      alert("User Created");
+      window.location.reload();
     } catch (error) {
-      console.log(error)
-      alert("Error creating user")
+      console.log(error);
+      alert("Error creating user");
     }
-   
-  }
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
@@ -40,7 +41,7 @@ const Register = () => {
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
               value={name}
-              onChange={(e)=>setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div>
@@ -52,7 +53,7 @@ const Register = () => {
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -64,7 +65,7 @@ const Register = () => {
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
               value={password}
-              onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button 
@@ -73,6 +74,9 @@ const Register = () => {
           >
             Register
           </button>
+          <p className="text-sm text-gray-600 text-center">
+            Already have an account? <a href="/login" className="font-bold hover:underline">Login</a>
+          </p>
         </form>
       </div>
     </div>

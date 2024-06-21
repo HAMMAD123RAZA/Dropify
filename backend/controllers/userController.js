@@ -1,4 +1,4 @@
-// controllers/auth.js
+
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import mysqlConnection from '../Connection.js';
@@ -6,8 +6,7 @@ import mysqlConnection from '../Connection.js';
 export const signUp = async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
-    const [rows] = await mysqlConnection
-    .execute('SELECT * FROM users WHERE email = ?', [email]);
+    const [rows] = await mysqlConnection.execute('SELECT * FROM users WHERE email = ?', [email]);
 
     if (rows.length > 0) {
       return res.status(400).json({ message: "User already exists" });
